@@ -1,0 +1,601 @@
+department,text
+Maintenance,Dimmer switch in presentation auditorium is stuck at lowest brightness.
+Accounts,Discrepancy in net salary amount: 4 days salary deducted incorrectly for leave.
+Accounts,Please look into this: declaration window closed on portal before I could upload life insurance receipt.
+Accounts,Salary slip shows incorrect designation and department code. Please let me know who can look into this.
+Technical,Regarding Technical issue: Webhook retry queue has over 15000 failed webhook dispatches requiring manual replay.
+Maintenance,"Pantry water dispenser (RO cooler) is not dispensing cold water, only hot."
+Technical,Database deadlocks occurring between concurrent inventory reservation transactions. Please let me know who can look into this.
+Technical,PDF generator service fails with segmentation fault when rendering tables with >50 rows.
+IT Support,Need temporary loaner laptop while mine is sent out for screen repair.
+Accounts,Corporate credit card statement shows unexpected duplicate transaction charge.
+HR,Can I carry forward my unused privilege leave to the next calendar year?
+HR,Requesting paternity leave approval for two weeks starting November 1st. Please advise on the next steps.
+Maintenance,AC unit above desk 18 is making a loud buzzing sound and vibrating constantly. This is blocking my work today.
+IT Support,Need USB-C to DisplayPort dongle for presentation in board room.
+HR,Reporting an issue: background verification agency requires secondary contact for address verification.
+HR,Information regarding the employee referral bonus policy and payout timeline.
+Maintenance,Pantry area air conditioning is not working and air is stuffy and humid. This is blocking my work today.
+IT Support,Cannot connect to the internal network after the password update.
+HR,Claim reimbursement for outpatient dental consultation rejected by TPA.
+Technical,"Export to CSV feature fails when dataset contains more than 10,000 rows."
+Accounts,Tax deduction at source (TDS) was deducted even after submitting 80C declarations.
+Maintenance,Exposed electrical wiring noticed near the 1st floor water cooler.
+HR,Background verification agency requires secondary contact for address verification.
+IT Support,Wi-Fi keeps asking for credentials repeatedly even after entering correct password. Let me know if you need any additional logs or details.
+Accounts,"Hello Support, hotel accommodation bill was in foreign currency, what exchange rate to apply?"
+Accounts,Expense report submitted two weeks ago is still stuck in Finance approval queue.
+Maintenance,Ticket regarding: noticeable strong bad chemical or mold odor coming from the ventilation shaft.
+Technical,AWS EKS node group scaling failed: InsufficientInstanceCapacity in us-east-1a.
+IT Support,My laptop is not connecting to the office Wi-Fi network on the 3rd floor.
+IT Support,"Lost my phone with Microsoft Authenticator app, need MFA token reset. Kindly resolve this at your earliest convenience."
+Maintenance,HVAC system turned off unexpectedly during client meeting in boardroom.
+Technical,"Search autocomplete debounce logic not working, firing API call on every keystroke."
+HR,I'm encountering a problem: need clarification on educational reimbursement and certification policy.
+Technical,Need immediate assistance: graphQL mutation 'updateUserPreferences' returns schema validation error.
+Technical,Urgent issue: elasticsearch cluster status is RED due to unassigned primary shards. Please advise on the next steps.
+Maintenance,Broken caster wheel on executive meeting room chair makes it tilt sideways.
+IT Support,Headset microphone not detected in Windows sound settings during Zoom calls. Please advise on the next steps.
+Accounts,Need payment confirmation advice to share with hardware supplier vendor.
+IT Support,I'm encountering a problem: wireless mouse and ergonomic keyboard provided by IT have stopped pairing. Thanks in advance for your help.
+IT Support,Requesting installation of Docker Desktop on my engineering workstation.
+Technical,Could someone check this: user avatars not loading on production due to S3 bucket CORS policy rejection.
+Maintenance,Please look into this: air conditioner blowing hot air instead of cold air in the finance department wing.
+Accounts,"Reporting an issue: client billing address on invoice INV-2026-091 is incorrect, please reissue. Impacting multiple team members on our floor."
+IT Support,"Hi team, outlook search indexing is broken, unable to find emails older than one week."
+Maintenance,Water puddle detected on hallway floor near water filtration station.
+IT Support,"Urgent issue: webcam on company Lenovo laptop has stopped working, shows black screen. Impacting multiple team members on our floor."
+Technical,Need immediate assistance: search endpoint returns 502 Bad Gateway when query string contains special characters.
+IT Support,Regarding IT Support issue: DNS resolution failed when trying to connect to the internal gitlab server via VPN.
+HR,Regarding HR issue: Applied for casual leave on the portal but my manager has not approved yet.
+Technical,Could someone check this: rate limiting bypass possible using forged X-Forwarded-For headers.
+Maintenance,Wall socket near printer station 3 has no power output. Let me know if you need any additional logs or details.
+Technical,Regarding Technical issue: Stripe webhook endpoint returning 400 Bad Request signature verification failed.
+IT Support,Not receiving external emails sent to my official WarpDrive email address.
+Accounts,"UAN number not linked with Aadhaar / National ID, cannot check PF balance."
+Technical,Memory leak observed in user-session-worker service causing OOM kill every 6 hours.
+IT Support,Outlook desktop app crashes immediately every time I try to open an email. Thanks in advance for your help.
+Accounts,Regarding Accounts issue: How do I claim reimbursement for broadband internet expenses under WFH policy?
+IT Support,Not receiving external emails sent to my official WarpDrive email address. This is blocking my work today.
+Accounts,Tax deduction certificate requested for foreign remittance tax filing. Thanks in advance for your help.
+Maintenance,Urinal sensor in executive restroom is constantly flushing without stopping.
+Maintenance,"Ticket regarding: my ergonomic desk chair hydraulic cylinder is broken, chair sinks to the floor. This is blocking my work today."
+IT Support,Please enable Bluetooth on my corporate Windows machine for work headset.
+Technical,Mobile app crashes instantly on iOS 17 when tapping the transactions tab.
+Maintenance,Quick question: toilet flush mechanism in cubicle 3 of men's restroom is broken and overflowing.
+Technical,Microservice payment-gateway is throwing NullPointerException in TransactionProcessor.java.
+Accounts,Credit note received from vendor needs to be adjusted against open invoice.
+IT Support,Printer output is faded with horizontal black streaks across all pages.
+IT Support,DNS resolution failed when trying to connect to the internal gitlab server via VPN.
+Technical,Docker build failing on NPM install due to registry network timeout.
+Technical,Regarding Technical issue: SSL certificate expired on api.staging.warpdrive.internal domain.
+Technical,Cross-Site Scripting (XSS) vulnerability detected in user comment input field.
+Accounts,Urgent issue: gST / Sales tax calculation error on the invoice sent to Enterprise client. Impacting multiple team members on our floor.
+Maintenance,Toilet flush mechanism in cubicle 3 of men's restroom is broken and overflowing.
+Maintenance,Regarding Maintenance issue: Water puddle detected on hallway floor near water filtration station.
+Maintenance,Urgent issue: dimmer switch in presentation auditorium is stuck at lowest brightness. Please let me know who can look into this.
+HR,Regarding HR issue: Need guidance on the onboarding documentation required for new joinee joining my team.
+Accounts,Requesting transfer of Provident Fund (PF / 401k) from previous company account. Please let me know who can look into this.
+Accounts,Accounts payable inquiry regarding advance payment release for cloud hosting.
+Technical,SSL certificate expired on api.staging.warpdrive.internal domain.
+Accounts,Salary slip shows incorrect designation and department code.
+IT Support,Ticket regarding: my mailbox is full at 50GB and I am unable to send or receive urgent emails. Impacting multiple team members on our floor.
+Maintenance,AC unit above desk 18 is making a loud buzzing sound and vibrating constantly. Kindly resolve this at your earliest convenience.
+HR,Need approval for maternity leave extension by two additional weeks.
+Maintenance,Regarding Maintenance issue: Office cabinet lock is jammed and I cannot access confidential project files.
+HR,"Hello Support, submitting university degree certificate for background verification check."
+HR,Buddy allocation request for the new graduate engineer joining engineering team. Let me know if you need any additional logs or details.
+Maintenance,Reporting an issue: heavy filing cabinet drawer slide rail is bent and drawer cannot be pulled out.
+Technical,Regarding Technical issue: Third-party SMS gateway Twilio integration is dropping messages with 429 Too Many Requests.
+Technical,gRPC client throwing UNAVAILABLE: io exception channel shutdown. This is blocking my work today.
+Technical,Snowflake automated data pipeline schema mismatch error on column 'customer_metadata'.
+IT Support,Ticket regarding: emails sent to customer support alias are getting stuck in Outbox. Appreciate a quick turnaround on this.
+Technical,Partner integration SFTP server connection drops midway during batch invoice transfer.
+HR,Regarding HR issue: Requesting details about the employee mental health counseling benefit program.
+HR,Regarding HR issue: Need to initiate the exit formalities and notice period buyout discussion.
+IT Support,Calendar invites from external clients are bouncing back with delivery error.
+Maintenance,Please look into this: sink drain in women's restroom on 3rd floor is clogged with standing water.
+HR,Need immediate assistance: discrepancy in leave balance calculation after returning from medical leave.
+Maintenance,Water tap in the 4th floor pantry sink is leaking heavily and will not shut off. This is blocking my work today.
+Technical,Dependency audit flagged high severity vulnerability in lodash npm package.
+IT Support,Trackpad on ThinkPad is unresponsive and clicks automatically. Thanks in advance for your help.
+IT Support,Need local admin rights temporarily to install debugging symbols.
+Technical,Rate limiting bypass possible using forged X-Forwarded-For headers.
+Maintenance,"My ergonomic desk chair hydraulic cylinder is broken, chair sinks to the floor."
+Technical,API Gateway rate limiter is throttling internal service-to-service requests by mistake.
+Accounts,I'm encountering a problem: need guidance on choosing between old tax regime and new tax regime on payroll portal. Impacting multiple team members on our floor.
+IT Support,The corporate VPN keeps disconnecting every 5 minutes when I work remotely. Kindly resolve this at your earliest convenience.
+Maintenance,Regarding Maintenance issue: Exposed electrical wiring noticed near the 1st floor water cooler.
+Technical,"Hello Support, file upload API fails with 413 Payload Too Large for files under 15MB limit."
+Technical,Data warehouse ETL job Airflow dag 'nightly_sales_sync' failed at step extract_crm.
+Technical,Please look into this: backend logs flooded with 'ConnectionResetError: [Errno 104] Connection reset by peer'. Kindly resolve this at your earliest convenience.
+IT Support,Account password expired today and I cannot log into the SSO dashboard.
+HR,Internal job transfer (IJP) application process for moving to product management.
+Maintenance,Pest control required: Ants observed near the cafeteria recycling bins.
+Accounts,Requesting transfer of Provident Fund (PF / 401k) from previous company account.
+HR,Career path progression framework document for QA engineering track.
+IT Support,Postman Enterprise license seat required for our QA team member.
+Maintenance,Electrical power strip at desk pod 6 sparked and tripped the circuit breaker. This is blocking my work today.
+HR,Harassment complaint reporting mechanism and POSH committee contacts.
+Maintenance,"Pantry water dispenser (RO cooler) is not dispensing cold water, only hot. This is blocking my work today."
+HR,Requesting details about the employee mental health counseling benefit program. Let me know if you need any additional logs or details.
+Technical,Elasticsearch cluster status is RED due to unassigned primary shards.
+Accounts,Could someone check this: mileage allowance claim for travel between suburban warehouse and HQ office. Please advise on the next steps.
+Maintenance,Keyboard tray under desk 31 has come loose from its mounting screws.
+Technical,Regarding Technical issue: Terraform apply failed: resource already exists in production AWS VPC.
+HR,Could someone check this: requesting confidential meeting with HR regarding interpersonal workplace conflict.
+Technical,Cross-Site Scripting (XSS) vulnerability detected in user comment input field. Let me know if you need any additional logs or details.
+Technical,Database migration script 0045_add_audit_columns failed on staging environment.
+HR,My attendance portal shows absent for yesterday even though I swiped my badge.
+Accounts,Tax deduction at source (TDS) was deducted even after submitting 80C declarations. Let me know if you need any additional logs or details.
+IT Support,Second display monitor shows 'No Signal' through HDMI cable.
+IT Support,Reporting an issue: need to reset security questions for internal employee portal.
+IT Support,Security alert: Received suspicious phishing email pretending to be the CEO.
+Accounts,"Hotel accommodation bill was in foreign currency, what exchange rate to apply?"
+IT Support,Need immediate assistance: unable to obtain IP address from DHCP server on guest Wi-Fi network. Please let me know who can look into this.
+HR,"Hello Support, i need to apply for 5 days of earned leave next month from Oct 12 to Oct 16."
+IT Support,Badge scanner on the office multi-function printer is not reading my card. Any help would be greatly appreciated.
+Maintenance,Carpet near main reception is torn and posing a tripping hazard for visitors.
+IT Support,Print jobs sent to color printer queue are disappearing without printing.
+Accounts,Need guidance on choosing between old tax regime and new tax regime on payroll portal.
+HR,What is the maximum coverage limit under the corporate hospitalization policy?
+Accounts,I'm encountering a problem: my salary for this month has not been credited to my HDFC bank account yet. Let me know if you need any additional logs or details.
+Accounts,Regarding Accounts issue: Credit note received from vendor needs to be adjusted against open invoice.
+Accounts,Quick question: mileage allowance claim for travel between suburban warehouse and HQ office.
+Technical,"Hi team, microservice payment-gateway is throwing NullPointerException in TransactionProcessor.java. This is blocking my work today."
+HR,Need information regarding the company parental insurance top-up scheme.
+IT Support,New team member joining Monday needs standard IT laptop and peripherals.
+Maintenance,Regarding Maintenance issue: Broken caster wheel on executive meeting room chair makes it tilt sideways.
+Technical,JSON parsing error: unexpected token < in JSON at position 0 when calling upstream API.
+Accounts,Please look into this: rent agreement and landlord PAN submission for House Rent Allowance tax exemption. Impacting multiple team members on our floor.
+HR,Need immediate assistance: new hire orientation schedule and welcome kit collection for Monday. Please let me know who can look into this.
+HR,Regarding HR issue: Career path progression framework document for QA engineering track.
+Accounts,Vendor asking for wire transfer SWIFT copy for overseas software licensing payment.
+Technical,API endpoint leaks sensitive user PII in exception stack trace responses.
+HR,Regarding HR issue: Where can I find the official WarpDrive Tech Works employee code of conduct?
+Technical,Deadlock detected in order fulfillment database transaction during peak load. Appreciate a quick turnaround on this.
+Accounts,Flight cancellation fee reimbursement request due to client rescheduling meeting.
+IT Support,Need immediate assistance: my laptop screen is flickering rapidly and goes completely black intermittently.
+Technical,"Hi team, export to CSV feature fails when dataset contains more than 10,000 rows."
+IT Support,Urgent issue: the external Dell monitor won't turn on even when plugged into power.
+HR,Requesting paternity leave approval for two weeks starting November 1st. Let me know if you need any additional logs or details.
+HR,What is the standard notice period for Senior Software Engineers?
+HR,Biometric punch machine did not register my check-in time this morning.
+Maintenance,Conference room frosted glass sliding door is stuck on its track and won't close.
+IT Support,Urgent issue: need access to the marketing-announcements distribution mailing list. Kindly resolve this at your earliest convenience.
+HR,Need approval for maternity leave extension by two additional weeks. Impacting multiple team members on our floor.
+HR,What is the maximum coverage limit under the corporate hospitalization policy?. Kindly resolve this at your earliest convenience.
+Accounts,How do I claim reimbursement for broadband internet expenses under WFH policy?
+IT Support,Need access to the marketing-announcements distribution mailing list.
+Maintenance,Door handle of 2nd floor phone booth came off in my hand.
+Accounts,Previous employer Form 12B submission for combined tax computation.
+HR,Requesting confidential meeting with HR regarding interpersonal workplace conflict.
+Technical,Infinite loop in frontend date picker component freezes the browser tab. Needed before end of day today.
+Accounts,Need help downloading my digital monthly payslips for the last 6 months.
+Maintenance,Quick question: the height-adjustable standing desk at workstation 19 is stuck at lowest level.
+Maintenance,"Restroom faucet on the 2nd floor has very low water pressure, barely trickling."
+IT Support,"Internet speed on floor 2 is crawling, unable to load internal portals."
+Accounts,"Client has paid via wire transfer, please reconcile against open invoice #782."
+Maintenance,"Hi team, window blinds in 5th floor boardroom cord snapped and blinds are tilted crooked. Kindly resolve this at your earliest convenience."
+Maintenance,Two fluorescent tube lights above the design team desks are flickering violently. Let me know if you need any additional logs or details.
+HR,I need to apply for 5 days of earned leave next month from Oct 12 to Oct 16.
+Technical,File upload API fails with 413 Payload Too Large for files under 15MB limit.
+IT Support,"Regarding IT Support issue: Accidentally deleted important folder in Outlook archive, need restore."
+Maintenance,Restroom door lock in handicap stall is jammed and cannot be unlocked from outside. Impacting multiple team members on our floor.
+Maintenance,"Hi team, pantry area air conditioning is not working and air is stuffy and humid. Let me know if you need any additional logs or details."
+HR,Regarding HR issue: Biometric punch machine did not register my check-in time this morning.
+Maintenance,Ticket regarding: water puddle detected on hallway floor near water filtration station. Appreciate a quick turnaround on this.
+Maintenance,Power outlets on boardroom conference table are not supplying power to chargers.
+Maintenance,"Hi team, exhaust fan in the server room backup cooling unit seems to have stopped. Kindly resolve this at your earliest convenience."
+IT Support,Wi-Fi signal in meeting room Orion is extremely weak and drops video calls.
+Accounts,Regarding Accounts issue: TDS mismatch between Form 26AS and the amount shown on my monthly salary slip.
+Accounts,I'm encountering a problem: need Form 16 Part A and Part B for financial year tax filing. Please let me know who can look into this.
+Maintenance,Regarding Maintenance issue: Water tap in the 4th floor pantry sink is leaking heavily and will not shut off.
+HR,Need to initiate the exit formalities and notice period buyout discussion. Kindly resolve this at your earliest convenience.
+IT Support,"Webcam on company Lenovo laptop has stopped working, shows black screen."
+IT Support,Laptop fan is making loud grinding noise and keyboard area is extremely hot. Thanks in advance for your help.
+Technical,CORS headers missing on public API endpoint causing frontend cross-origin error.
+Maintenance,Need immediate assistance: electrical power strip at desk pod 6 sparked and tripped the circuit breaker.
+Accounts,Night shift allowance not reflected in the September payroll statement. Impacting multiple team members on our floor.
+HR,Requesting training budget reimbursement for AWS Solutions Architect certification.
+HR,Please look into this: discrepancy in leave balance calculation after returning from medical leave.
+HR,Ticket regarding: how can I add my newborn child to the group health insurance policy?. Needed before end of day today.
+Accounts,Regarding Accounts issue: Gratuity calculation inquiry for employee completing 5 continuous years.
+HR,Please look into this: how to download the insurance policy certificate for visa application?. Thanks in advance for your help.
+IT Support,Need toner cartridge replacement for the Accounts department HP LaserJet.
+Technical,JWT token validation failing because public key rotation script did not propagate. Needed before end of day today.
+HR,Regarding HR issue: Inquiring about the company work-from-home and remote work policy guidelines.
+Technical,Infinite loop in frontend date picker component freezes the browser tab.
+HR,Information regarding the employee referral bonus policy and payout timeline. Any help would be greatly appreciated.
+HR,"Hi team, how to download the insurance policy certificate for visa application?. Appreciate a quick turnaround on this."
+IT Support,Regarding IT Support issue: Cisco AnyConnect gives error 'Certificate validation failure' on startup.
+Accounts,Regarding Accounts issue: Deduction under professional tax seems higher than standard monthly rate.
+IT Support,Need dual monitor setup installed at newly assigned desk 14A.
+HR,Can I carry forward my unused privilege leave to the next calendar year?. Needed before end of day today.
+Maintenance,Noticeable strong bad chemical or mold odor coming from the ventilation shaft.
+Technical,Foreign key constraint violation on user deletion in customer-service DB. Please advise on the next steps.
+IT Support,Request approval and installation for JetBrains IntelliJ IDEA Ultimate.
+Maintenance,Regarding Maintenance issue: Thermostat controller in executive meeting room displays 'Error E4 Sensor Fault'.
+IT Support,Microsoft 365 says 'Unlicensed Product' and has disabled document editing.
+Accounts,"Could someone check this: hold on salary payout due to pending timesheet approval, timesheet now approved."
+Maintenance,Please look into this: emergency exit sign light near staircase B is dangling loose by its wires. Any help would be greatly appreciated.
+Technical,Terraform apply failed: resource already exists in production AWS VPC.
+IT Support,I'm encountering a problem: teams status is stuck on 'Away' even when actively typing and working. Impacting multiple team members on our floor.
+Maintenance,"Need immediate assistance: no cool air coming from vents in the engineering pod, room temperature is 82°F."
+IT Support,The external Dell monitor won't turn on even when plugged into power.
+HR,Ticket regarding: what is the maximum coverage limit under the corporate hospitalization policy?. Please let me know who can look into this.
+Accounts,"Regarding Accounts issue: UAN number not linked with Aadhaar / National ID, cannot check PF balance."
+Maintenance,Regarding Maintenance issue: Toilet flush mechanism in cubicle 3 of men's restroom is broken and overflowing.
+Accounts,Mileage allowance claim for travel between suburban warehouse and HQ office.
+Technical,Kubernetes pod for notification-service is in CrashLoopBackOff state.
+Technical,Regarding Technical issue: Vulnerability scanner detected critical CVE in log4j dependency of legacy service.
+Maintenance,Air conditioner blowing hot air instead of cold air in the finance department wing.
+Maintenance,Whiteboard in meeting room Jupiter has fallen off its wall mounting bracket.
+IT Support,"Accidentally deleted important folder in Outlook archive, need restore."
+HR,Requesting relieving letter and experience certificate following resignation.
+IT Support,"Hi team, docking station USB-C port is loose and doesn't charge my MacBook Pro."
+IT Support,Emails sent to customer support alias are getting stuck in Outbox.
+Technical,Redis cache cluster CPU utilization is spiked at 100% causing latency spikes.
+Maintenance,Regarding Maintenance issue: HVAC system turned off unexpectedly during client meeting in boardroom.
+Accounts,"Hello Support, flight cancellation fee reimbursement request due to client rescheduling meeting."
+HR,Need bereavement leave policy details and how to record it in HRMS portal.
+Accounts,How do I claim reimbursement for broadband internet expenses under WFH policy?. Any help would be greatly appreciated.
+HR,My attendance portal shows absent for yesterday even though I swiped my badge. Needed before end of day today.
+Maintenance,UPS backup outlet in server room 2 shows red warning indicator light.
+Accounts,"Lost original paper receipt for taxi fare, will credit card statement suffice?. This is blocking my work today."
+Maintenance,Reporting an issue: office entrance magnetic badge door lock is not engaging properly after closing. Appreciate a quick turnaround on this.
+Technical,Session tokens expiring prematurely after 5 minutes instead of configured 8 hours.
+Accounts,Clarification on tax exemption rules for meal vouchers and mobile reimbursement.
+Maintenance,Exhaust fan in the server room backup cooling unit seems to have stopped.
+IT Support,Outlook desktop app crashes immediately every time I try to open an email.
+Technical,SQL injection warning raised by SonarQube in report generation repository.
+IT Support,Wireless mouse and ergonomic keyboard provided by IT have stopped pairing.
+Accounts,"Ticket regarding: updated my salary bank account details on portal, please confirm switch. Kindly resolve this at your earliest convenience."
+Technical,Urgent issue: data warehouse ETL job Airflow dag 'nightly_sales_sync' failed at step extract_crm.
+Maintenance,Please look into this: hot water geyser in kitchen pantry has tripped and is not heating water.
+IT Support,Antivirus software SentinelOne is flagging legitimate development tool.
+HR,Regarding HR issue: Hospital requires cashless TPA pre-authorization form for surgery tomorrow.
+Accounts,My travel expense claim for customer visit to Chicago is pending approval. Let me know if you need any additional logs or details.
+HR,Need copy of corporate medical insurance health card for my dependents. Please let me know who can look into this.
+HR,I'm encountering a problem: need bereavement leave policy details and how to record it in HRMS portal. Appreciate a quick turnaround on this.
+Accounts,Please look into this: need guidance on choosing between old tax regime and new tax regime on payroll portal. Any help would be greatly appreciated.
+IT Support,"Need immediate assistance: internet speed on floor 2 is crawling, unable to load internal portals."
+Technical,Secret manager environment variable DB_PASSWORD not mounting inside K8s container.
+Accounts,Regarding Accounts issue: Vendor asking for wire transfer SWIFT copy for overseas software licensing payment.
+Maintenance,Air conditioning in Conference Room Apollo on the 4th floor is completely off.
+Technical,Database migration script 0045_add_audit_columns failed on staging environment. Kindly resolve this at your earliest convenience.
+Maintenance,"Could someone check this: restroom faucet on the 2nd floor has very low water pressure, barely trickling."
+Maintenance,Regarding Maintenance issue: Restroom door lock in handicap stall is jammed and cannot be unlocked from outside.
+Accounts,"Hold on salary payout due to pending timesheet approval, timesheet now approved."
+IT Support,Audio jack broken inside the headphone port of company laptop.
+Accounts,Ticket regarding: corporate credit card statement shows unexpected duplicate transaction charge. Let me know if you need any additional logs or details.
+Accounts,Bank direct deposit failed with message 'Account details invalid or frozen'.
+IT Support,External backup drive provided by IT is not mounting in File Explorer.
+Maintenance,Two fluorescent tube lights above the design team desks are flickering violently.
+IT Support,"Ethernet port at desk 42B seems dead, no link light on laptop dock."
+HR,Recognition rewards program points redemption portal is not loading.
+Accounts,Need Form 16 Part A and Part B for financial year tax filing.
+Technical,Ingress controller NGINX returning 404 for all endpoints under /api/v3 route.
+Technical,Database deadlocks occurring between concurrent inventory reservation transactions.
+Maintenance,"Please look into this: the 2nd floor open workstation bay is freezing cold, please adjust thermostat."
+Maintenance,Garbage bins on the 4th floor balcony area are overflowing and need clearing.
+Technical,Foreign key constraint violation on user deletion in customer-service DB.
+Maintenance,Regarding Maintenance issue: Air conditioning in Conference Room Apollo on the 4th floor is completely off.
+Technical,Need immediate assistance: helm chart deployment failed due to invalid YAML indentation in values.yaml.
+IT Support,Regarding IT Support issue: Floor 3 Ricoh printer is jammed and displaying error code SC542.
+Technical,GraphQL mutation 'updateUserPreferences' returns schema validation error.
+Maintenance,Regarding Maintenance issue: Carpet near main reception is torn and posing a tripping hazard for visitors.
+Accounts,Bank direct deposit failed with message 'Account details invalid or frozen'. Impacting multiple team members on our floor.
+HR,My attendance portal shows absent for yesterday even though I swiped my badge. Kindly resolve this at your earliest convenience.
+Maintenance,Quick question: exposed electrical wiring noticed near the 1st floor water cooler. Thanks in advance for your help.
+Accounts,Overtime allowance approved by manager is missing from the current month payslip.
+IT Support,I'm encountering a problem: antivirus software SentinelOne is flagging legitimate development tool. This is blocking my work today.
+Maintenance,Regarding Maintenance issue: Conference room frosted glass sliding door is stuck on its track and won't close.
+Maintenance,"I'm encountering a problem: restroom faucet on the 2nd floor has very low water pressure, barely trickling."
+Accounts,"Hello Support, invoice payment status inquiry for creative design contractor invoice #104. Needed before end of day today."
+HR,Dependent parents hospital claim status inquiry and cashless settlement.
+IT Support,Need MS Visio license for creating system architecture diagrams.
+Technical,Reporting an issue: the billing checkout service crashes with HTTP 500 when processing promo codes.
+Technical,Helm chart deployment failed due to invalid YAML indentation in values.yaml.
+Technical,Webhook retry queue has over 15000 failed webhook dispatches requiring manual replay.
+Accounts,GST / Sales tax calculation error on the invoice sent to Enterprise client.
+Technical,Regarding Technical issue: Docker build failing on NPM install due to registry network timeout.
+Technical,Regarding Technical issue: Frontend React app throws 'Uncaught TypeError: Cannot read property of undefined' on customer profile page.
+Technical,Urgent issue: gitHub Actions production deployment pipeline failed during Docker image build stage.
+Accounts,Regarding Accounts issue: Discrepancy in monthly employer PF contribution shown on employee passbook.
+Accounts,Need immediate assistance: tDS mismatch between Form 26AS and the amount shown on my monthly salary slip. Please let me know who can look into this.
+Maintenance,"Hi team, emergency exit sign light near staircase B is dangling loose by its wires. Appreciate a quick turnaround on this."
+HR,Peer review feedback submission deadline extension request.
+Accounts,I'm encountering a problem: clarification on tax exemption rules for meal vouchers and mobile reimbursement.
+IT Support,My active directory domain account is locked out after three invalid attempts.
+HR,Need clarification on annual variable pay bonus payout criteria.
+Accounts,Quick question: bank direct deposit failed with message 'Account details invalid or frozen'.
+Technical,Please look into this: postgreSQL query on 'orders' table timing out after 30 seconds due to missing index. Impacting multiple team members on our floor.
+Maintenance,Wall socket near printer station 3 has no power output.
+Technical,WebSocket connections disconnect after exactly 60 seconds behind AWS ALB. Please let me know who can look into this.
+IT Support,Need help installing the secure follow-me badge printing utility.
+IT Support,Badge scanner on the office multi-function printer is not reading my card.
+Accounts,Ticket regarding: accounts payable inquiry regarding advance payment release for cloud hosting. Impacting multiple team members on our floor.
+Maintenance,I'm encountering a problem: urinal sensor in executive restroom is constantly flushing without stopping. Impacting multiple team members on our floor.
+Maintenance,I'm encountering a problem: water is actively dripping from the ceiling AC unit right onto desk 24. Needed before end of day today.
+IT Support,"Could someone check this: ethernet port at desk 42B seems dead, no link light on laptop dock."
+Technical,Regarding Technical issue: Redis cache cluster CPU utilization is spiked at 100% causing latency spikes.
+Technical,PostgreSQL query on 'orders' table timing out after 30 seconds due to missing index.
+Accounts,Night shift allowance not reflected in the September payroll statement.
+Accounts,"Updated my salary bank account details on portal, please confirm switch."
+Technical,High CPU usage on backend microservice cluster after deploying release v2.4.1.
+IT Support,Scanner utility on office printer fails with error 'Destination folder unreachable'.
+Accounts,Ticket regarding: flight cancellation fee reimbursement request due to client rescheduling meeting.
+Technical,Quick question: oAuth2 token introspection endpoint returning 401 Unauthorized for valid service tokens.
+Maintenance,Main corridor ceiling lights are not turning on with the automated timer.
+Technical,JWT token validation failing because public key rotation script did not propagate.
+Technical,"Hi team, kubernetes pod for notification-service is in CrashLoopBackOff state."
+IT Support,Cannot find the network printer 'WD-HQ-PRINTER-02' on my Mac. Let me know if you need any additional logs or details.
+Accounts,Vendor Acme Cloud Services invoice #4892 is overdue for payment by 15 days. Impacting multiple team members on our floor.
+HR,Urgent issue: i need to apply for 5 days of earned leave next month from Oct 12 to Oct 16. Kindly resolve this at your earliest convenience.
+Accounts,Ticket regarding: tax deduction certificate requested for foreign remittance tax filing.
+HR,Questions regarding the promotion eligibility criteria for tech lead role.
+HR,Quick question: eSOP stock options vesting schedule and grant letter access on portal.
+Accounts,"Hello Support, hotel accommodation bill was in foreign currency, what exchange rate to apply?. Please advise on the next steps."
+Accounts,Per diem daily allowance calculation for international deployment in London.
+Accounts,Ticket regarding: salary slip shows incorrect designation and department code. Needed before end of day today.
+Technical,I'm encountering a problem: high CPU usage on backend microservice cluster after deploying release v2.4.1.
+Maintenance,Regarding Maintenance issue: Two fluorescent tube lights above the design team desks are flickering violently.
+HR,How to download the insurance policy certificate for visa application?
+Accounts,"I'm encountering a problem: client has paid via wire transfer, please reconcile against open invoice #782."
+Technical,GitHub Actions production deployment pipeline failed during Docker image build stage.
+HR,Where can I find the official WarpDrive Tech Works employee code of conduct?
+Accounts,Quick question: need Form 16 Part A and Part B for financial year tax filing.
+Technical,Could someone check this: mongoDB replica set secondary node is out of sync and stuck in RECOVERING state.
+Technical,Slow query response times on dashboard metrics endpoint taking over 12 seconds.
+HR,Performance appraisal cycle schedule and self-evaluation deadline inquiry.
+HR,Reporting an issue: can I carry forward my unused privilege leave to the next calendar year?
+HR,Regarding HR issue: Internal job transfer (IJP) application process for moving to product management.
+HR,Could someone check this: probation confirmation letter has not been received after completing 6 months.
+Maintenance,Please look into this: conference room frosted glass sliding door is stuck on its track and won't close.
+Maintenance,Regarding Maintenance issue: Exhaust fan in the server room backup cooling unit seems to have stopped.
+IT Support,Duo push notifications are not coming through to my new phone.
+Accounts,"Ticket regarding: how do I submit investment proofs for HRA, medical insurance, and 80C on portal?"
+HR,Submitting university degree certificate for background verification check. Please let me know who can look into this.
+Technical,Race condition in coupon redemption allows multiple users to apply single-use code.
+IT Support,Cannot find the network printer 'WD-HQ-PRINTER-02' on my Mac.
+IT Support,Need to reset security questions for internal employee portal.
+Accounts,"Urgent issue: how do I submit investment proofs for HRA, medical insurance, and 80C on portal?. Kindly resolve this at your earliest convenience."
+HR,How can I add my newborn child to the group health insurance policy?
+Accounts,"Lost original paper receipt for taxi fare, will credit card statement suffice?"
+Accounts,Please look into this: deduction under professional tax seems higher than standard monthly rate. Any help would be greatly appreciated.
+Technical,"Hello Support, ingress controller NGINX returning 404 for all endpoints under /api/v3 route. Kindly resolve this at your earliest convenience."
+Maintenance,Ticket regarding: dimmer switch in presentation auditorium is stuck at lowest brightness.
+HR,Applied for casual leave on the portal but my manager has not approved yet.
+Maintenance,"Water dispenser filters overdue for replacement, water tastes stale. This is blocking my work today."
+IT Support,Laptop fan is making loud grinding noise and keyboard area is extremely hot.
+HR,Regarding HR issue: Requesting official employment verification letter for mortgage loan application.
+Technical,Secret manager environment variable DB_PASSWORD not mounting inside K8s container. Let me know if you need any additional logs or details.
+Maintenance,Sink drain in women's restroom on 3rd floor is clogged with standing water.
+HR,Pending asset return handover checklist for employee leaving this Friday.
+HR,Regarding HR issue: Peer review feedback submission deadline extension request.
+Accounts,"Hello Support, lost original paper receipt for taxi fare, will credit card statement suffice?. Any help would be greatly appreciated."
+Maintenance,Regarding Maintenance issue: Door handle of 2nd floor phone booth came off in my hand.
+HR,Regarding HR issue: What is the standard notice period for Senior Software Engineers?
+IT Support,Urgent issue: security alert: Received suspicious phishing email pretending to be the CEO. Needed before end of day today.
+HR,Requesting details about the employee mental health counseling benefit program.
+Maintenance,Water is actively dripping from the ceiling AC unit right onto desk 24. Kindly resolve this at your earliest convenience.
+IT Support,Zoom desktop client is asking for administrative credentials to update.
+HR,Please look into this: claim reimbursement for outpatient dental consultation rejected by TPA.
+HR,New hire orientation schedule and welcome kit collection for Monday.
+Accounts,"Quick question: hold on salary payout due to pending timesheet approval, timesheet now approved. Needed before end of day today."
+Technical,Regarding Technical issue: Session tokens expiring prematurely after 5 minutes instead of configured 8 hours.
+HR,How do I check my remaining annual leave and sick leave balance for this year?
+Maintenance,"My ergonomic desk chair hydraulic cylinder is broken, chair sinks to the floor. Appreciate a quick turnaround on this."
+Accounts,Client dinner receipt of $185 rejected with reason 'itemized bill missing'.
+IT Support,Chrome browser update failed with corporate policy restriction error.
+HR,Probation confirmation letter has not been received after completing 6 months.
+Technical,"Hello Support, staging environment URL is inaccessible, returning 503 Service Unavailable."
+Accounts,Declaration window closed on portal before I could upload life insurance receipt.
+Accounts,Regarding Accounts issue: Expense report submitted two weeks ago is still stuck in Finance approval queue.
+IT Support,Teams status is stuck on 'Away' even when actively typing and working.
+Maintenance,Regarding Maintenance issue: Main corridor ceiling lights are not turning on with the automated timer.
+Accounts,Regarding Accounts issue: Need help downloading my digital monthly payslips for the last 6 months.
+Maintenance,"Hello Support, pest control required: Ants observed near the cafeteria recycling bins."
+Technical,User avatars not loading on production due to S3 bucket CORS policy rejection.
+HR,How can I add my newborn child to the group health insurance policy?. Any help would be greatly appreciated.
+Technical,Frontend React app throws 'Uncaught TypeError: Cannot read property of undefined' on customer profile page.
+Maintenance,Reporting an issue: power outlets on boardroom conference table are not supplying power to chargers.
+IT Support,Unable to obtain IP address from DHCP server on guest Wi-Fi network.
+IT Support,Docking station firmware update failed and display outputs stopped working.
+IT Support,Docking station USB-C port is loose and doesn't charge my MacBook Pro.
+HR,"Hello Support, recognition rewards program points redemption portal is not loading. This is blocking my work today."
+IT Support,Need Visual Studio Community or Enterprise installed on my new laptop.
+IT Support,Quick question: laptop battery drains from 100% to 0% in less than 40 minutes. This is blocking my work today.
+Accounts,"Hi team, overtime allowance approved by manager is missing from the current month payslip. Thanks in advance for your help."
+Technical,Kafka consumer lag is growing rapidly on topic 'order-events' due to unhandled exceptions.
+Maintenance,"The 2nd floor open workstation bay is freezing cold, please adjust thermostat."
+IT Support,Requesting high-speed 65W USB-C fast charger for official travel.
+IT Support,Wi-Fi connection drops whenever microwave in pantry is turned on.
+Accounts,Need immediate assistance: pension scheme enrollment confirmation and nominee update request. Thanks in advance for your help.
+IT Support,The corporate VPN keeps disconnecting every 5 minutes when I work remotely.
+Accounts,"Regarding Accounts issue: Purchase Order (PO) number missing on supplier invoice, payment is blocked."
+Accounts,Gratuity calculation inquiry for employee completing 5 continuous years.
+Maintenance,Main corridor ceiling lights are not turning on with the automated timer. Impacting multiple team members on our floor.
+Accounts,Invoice payment status inquiry for creative design contractor invoice #104.
+Maintenance,"Light bulb in the 3rd floor men's restroom has burnt out, room is pitch dark. Please advise on the next steps."
+IT Support,Need toner cartridge replacement for the Accounts department HP LaserJet. Thanks in advance for your help.
+Accounts,Tax deduction at source (TDS) was deducted even after submitting 80C declarations. Impacting multiple team members on our floor.
+Maintenance,Window blinds in 5th floor boardroom cord snapped and blinds are tilted crooked.
+Maintenance,Could someone check this: hVAC system turned off unexpectedly during client meeting in boardroom. Please let me know who can look into this.
+IT Support,Regarding IT Support issue: Need password reset for my Windows workstation and single sign-on portal.
+HR,ESOP stock options vesting schedule and grant letter access on portal.
+Accounts,"Client billing address on invoice INV-2026-091 is incorrect, please reissue."
+Accounts,Declaration window closed on portal before I could upload life insurance receipt. Please advise on the next steps.
+IT Support,YubiKey hardware security key is not recognized when inserting into USB.
+IT Support,"Hello Support, my active directory domain account is locked out after three invalid attempts. Kindly resolve this at your earliest convenience."
+HR,Requesting sponsorship approval for attending annual tech conference in SF.
+Accounts,Could someone check this: vendor Acme Cloud Services invoice #4892 is overdue for payment by 15 days. Please advise on the next steps.
+IT Support,Old company laptop needs secure data wipe before disposal.
+Technical,Search endpoint returns 502 Bad Gateway when query string contains special characters.
+Technical,Vulnerability scanner detected critical CVE in log4j dependency of legacy service.
+Accounts,Discrepancy in monthly employer PF contribution shown on employee passbook.
+Maintenance,Regarding Maintenance issue: UPS backup outlet in server room 2 shows red warning indicator light.
+IT Support,My laptop screen is flickering rapidly and goes completely black intermittently.
+HR,Regarding HR issue: Need information regarding the company parental insurance top-up scheme.
+HR,I'm encountering a problem: harassment complaint reporting mechanism and POSH committee contacts. Any help would be greatly appreciated.
+HR,Urgent issue: dress code and office etiquette guidelines for client presentation days. Let me know if you need any additional logs or details.
+IT Support,Reporting an issue: duo push notifications are not coming through to my new phone.
+HR,Reporting an issue: requesting sponsorship approval for attending annual tech conference in SF. Any help would be greatly appreciated.
+IT Support,Paper tray 2 on the shared corridor printer is cracked and stuck.
+Maintenance,Thermostat controller in executive meeting room displays 'Error E4 Sensor Fault'.
+Maintenance,"Water dispenser filters overdue for replacement, water tastes stale."
+Maintenance,"Regarding Maintenance issue: Light bulb in the 3rd floor men's restroom has burnt out, room is pitch dark."
+IT Support,Returning IT hardware (monitor and docking station) as I moved desks.
+IT Support,Shared department mailbox IT-Ops is not appearing in my Outlook sidebar. Kindly resolve this at your earliest convenience.
+Technical,Third-party SMS gateway Twilio integration is dropping messages with 429 Too Many Requests.
+Maintenance,Air conditioner blowing hot air instead of cold air in the finance department wing. Thanks in advance for your help.
+IT Support,Need password reset for my Windows workstation and single sign-on portal.
+Technical,Please look into this: mobile app crashes instantly on iOS 17 when tapping the transactions tab.
+HR,Performance appraisal cycle schedule and self-evaluation deadline inquiry. Needed before end of day today.
+HR,Dress code and office etiquette guidelines for client presentation days.
+Technical,Regarding Technical issue: Kafka consumer lag is growing rapidly on topic 'order-events' due to unhandled exceptions.
+HR,Claim reimbursement for outpatient dental consultation rejected by TPA. Please let me know who can look into this.
+Maintenance,"Hi team, urinal sensor in executive restroom is constantly flushing without stopping. Please advise on the next steps."
+Technical,Urgent issue: memory leak observed in user-session-worker service causing OOM kill every 6 hours.
+Accounts,Urgent issue: need payment confirmation advice to share with hardware supplier vendor. Needed before end of day today.
+Maintenance,Electrical power strip at desk pod 6 sparked and tripped the circuit breaker.
+Accounts,Rent agreement and landlord PAN submission for House Rent Allowance tax exemption. Needed before end of day today.
+Technical,"Could someone check this: search autocomplete debounce logic not working, firing API call on every keystroke. Any help would be greatly appreciated."
+IT Support,Regarding IT Support issue: Account password expired today and I cannot log into the SSO dashboard.
+Maintenance,Pantry area air conditioning is not working and air is stuffy and humid.
+Maintenance,Urgent issue: uPS backup outlet in server room 2 shows red warning indicator light.
+IT Support,Headset microphone not detected in Windows sound settings during Zoom calls.
+Technical,REST API endpoint /api/v2/analytics response payload truncated due to buffer overflow.
+Technical,JSON parsing error: unexpected token < in JSON at position 0 when calling upstream API. Impacting multiple team members on our floor.
+HR,I'm encountering a problem: requesting relieving letter and experience certificate following resignation.
+HR,Need copy of corporate medical insurance health card for my dependents.
+Accounts,Regarding Accounts issue: Client dinner receipt of $185 rejected with reason 'itemized bill missing'.
+Maintenance,Whiteboard in meeting room Jupiter has fallen off its wall mounting bracket. Any help would be greatly appreciated.
+Maintenance,The height-adjustable standing desk at workstation 19 is stuck at lowest level.
+Technical,AWS EKS node group scaling failed: InsufficientInstanceCapacity in us-east-1a. Kindly resolve this at your earliest convenience.
+Accounts,Regarding Accounts issue: Night shift allowance not reflected in the September payroll statement.
+IT Support,Wi-Fi signal in meeting room Orion is extremely weak and drops video calls. This is blocking my work today.
+Accounts,"How do I submit investment proofs for HRA, medical insurance, and 80C on portal?"
+Maintenance,"No cool air coming from vents in the engineering pod, room temperature is 82°F."
+HR,Urgent issue: need copy of corporate medical insurance health card for my dependents.
+Technical,Need immediate assistance: argoCD sync failed for billing-service: git repository authentication timeout.
+HR,Need clarification on educational reimbursement and certification policy.
+HR,Dependent parents hospital claim status inquiry and cashless settlement. This is blocking my work today.
+Maintenance,Office entrance magnetic badge door lock is not engaging properly after closing.
+HR,Ticket regarding: how do I check my remaining annual leave and sick leave balance for this year?
+Technical,PDF generator service fails with segmentation fault when rendering tables with >50 rows. Needed before end of day today.
+Technical,Ticket regarding: sQL injection warning raised by SonarQube in report generation repository.
+Technical,Snowflake automated data pipeline schema mismatch error on column 'customer_metadata'. Needed before end of day today.
+IT Support,Transfer files from old workstation hard drive to new SSD laptop.
+HR,What is the policy regarding working on public holidays and compensatory off?
+Accounts,"Hi team, updated my salary bank account details on portal, please confirm switch. This is blocking my work today."
+Technical,The billing checkout service crashes with HTTP 500 when processing promo codes.
+IT Support,Desk phone Cisco IP Phone 8845 shows 'Registering' and has no dial tone.
+Maintenance,Water tap in the 4th floor pantry sink is leaking heavily and will not shut off.
+HR,Hospital requires cashless TPA pre-authorization form for surgery tomorrow.
+Technical,"Staging environment URL is inaccessible, returning 503 Service Unavailable."
+IT Support,Trackpad on ThinkPad is unresponsive and clicks automatically.
+Maintenance,Water is actively dripping from the ceiling AC unit right onto desk 24.
+IT Support,My mailbox is full at 50GB and I am unable to send or receive urgent emails.
+IT Support,Company issued iPad needs enterprise MDM profile re-enrollment.
+IT Support,Slack desktop client won't launch on Windows 11 after latest update.
+Technical,API Gateway rate limiter is throttling internal service-to-service requests by mistake. Please let me know who can look into this.
+HR,"Hello Support, questions regarding the promotion eligibility criteria for tech lead role. Any help would be greatly appreciated."
+Technical,ArgoCD sync failed for billing-service: git repository authentication timeout.
+HR,Quick question: new hire orientation schedule and welcome kit collection for Monday. Impacting multiple team members on our floor.
+Maintenance,Heavy filing cabinet drawer slide rail is bent and drawer cannot be pulled out.
+Maintenance,"Hi team, water dispenser filters overdue for replacement, water tastes stale. Let me know if you need any additional logs or details."
+Accounts,Quick question: previous employer Form 12B submission for combined tax computation.
+HR,What is the policy regarding working on public holidays and compensatory off?. Needed before end of day today.
+IT Support,"Lost my phone with Microsoft Authenticator app, need MFA token reset."
+HR,Regarding HR issue: Manager has not scheduled the mid-year review discussion yet.
+Technical,Regarding Technical issue: Slow query response times on dashboard metrics endpoint taking over 12 seconds.
+HR,Quick question: requesting training budget reimbursement for AWS Solutions Architect certification. Any help would be greatly appreciated.
+IT Support,"Outlook search indexing is broken, unable to find emails older than one week."
+Maintenance,AC unit above desk 18 is making a loud buzzing sound and vibrating constantly.
+Technical,Reporting an issue: broken access control allows non-admin API caller to invoke /api/internal/config.
+IT Support,"Hello Support, yubiKey hardware security key is not recognized when inserting into USB."
+Accounts,My travel expense claim for customer visit to Chicago is pending approval.
+Maintenance,"Regarding Maintenance issue: No cool air coming from vents in the engineering pod, room temperature is 82°F."
+HR,Buddy allocation request for the new graduate engineer joining engineering team.
+Accounts,Tax deduction certificate requested for foreign remittance tax filing.
+Accounts,Urgent issue: previous employer Form 12B submission for combined tax computation. Kindly resolve this at your earliest convenience.
+Technical,Deadlock detected in order fulfillment database transaction during peak load.
+HR,Inquiring about the company work-from-home and remote work policy guidelines.
+IT Support,Laptop battery drains from 100% to 0% in less than 40 minutes.
+Accounts,Pension scheme enrollment confirmation and nominee update request.
+Maintenance,Regarding Maintenance issue: Sink drain in women's restroom on 3rd floor is clogged with standing water.
+Maintenance,Please look into this: power outlets on boardroom conference table are not supplying power to chargers. Impacting multiple team members on our floor.
+Accounts,Quick question: discrepancy in net salary amount: 4 days salary deducted incorrectly for leave.
+Technical,I'm encountering a problem: cORS headers missing on public API endpoint causing frontend cross-origin error.
+Technical,OAuth2 token introspection endpoint returning 401 Unauthorized for valid service tokens.
+IT Support,Urgent issue: cannot connect to the internal network after the password update.
+Accounts,"Regarding Accounts issue: Client billing address on invoice INV-2026-091 is incorrect, please reissue."
+IT Support,Reporting an issue: printer output is faded with horizontal black streaks across all pages. This is blocking my work today.
+HR,Need bereavement leave policy details and how to record it in HRMS portal. Impacting multiple team members on our floor.
+Maintenance,"Please look into this: pantry water dispenser (RO cooler) is not dispensing cold water, only hot."
+Maintenance,"Light bulb in the 3rd floor men's restroom has burnt out, room is pitch dark."
+HR,Need to initiate the exit formalities and notice period buyout discussion.
+Technical,Backend logs flooded with 'ConnectionResetError: [Errno 104] Connection reset by peer'.
+HR,Requesting official employment verification letter for mortgage loan application.
+Maintenance,Office cabinet lock is jammed and I cannot access confidential project files.
+Accounts,TDS mismatch between Form 26AS and the amount shown on my monthly salary slip.
+Technical,MongoDB replica set secondary node is out of sync and stuck in RECOVERING state.
+Technical,Regarding Technical issue: Partner integration SFTP server connection drops midway during batch invoice transfer.
+Technical,Broken access control allows non-admin API caller to invoke /api/internal/config.
+Accounts,My travel expense claim for customer visit to Chicago is pending approval. Please advise on the next steps.
+HR,Need clarification on annual variable pay bonus payout criteria. Let me know if you need any additional logs or details.
+Maintenance,Please look into this: garbage bins on the 4th floor balcony area are overflowing and need clearing. Needed before end of day today.
+IT Support,Second display monitor shows 'No Signal' through HDMI cable. This is blocking my work today.
+Technical,Connection pool exhausted in backend API: 'Timeout waiting for connection from pool'.
+Accounts,Rent agreement and landlord PAN submission for House Rent Allowance tax exemption.
+IT Support,BitLocker recovery key prompt appeared on boot screen after restart.
+Accounts,Discrepancy in net salary amount: 4 days salary deducted incorrectly for leave. Please advise on the next steps.
+HR,Regarding HR issue: Pending asset return handover checklist for employee leaving this Friday.
+IT Support,Floor 3 Ricoh printer is jammed and displaying error code SC542.
+IT Support,Reporting an issue: calendar invites from external clients are bouncing back with delivery error. Kindly resolve this at your earliest convenience.
+Technical,Stripe webhook endpoint returning 400 Bad Request signature verification failed.
+Maintenance,Regarding Maintenance issue: Wall socket near printer station 3 has no power output.
+Technical,Connection pool exhausted in backend API: 'Timeout waiting for connection from pool'. Needed before end of day today.
+Technical,Need immediate assistance: race condition in coupon redemption allows multiple users to apply single-use code.
+Accounts,My salary for this month has not been credited to my HDFC bank account yet.
+Technical,Dependency audit flagged high severity vulnerability in lodash npm package. This is blocking my work today.
+HR,I'm encountering a problem: how do I check my remaining annual leave and sick leave balance for this year?. Kindly resolve this at your earliest convenience.
+Maintenance,Restroom door lock in handicap stall is jammed and cannot be unlocked from outside.
+IT Support,Need Adobe Acrobat Pro license assigned to my email for document signing.
+IT Support,Cisco AnyConnect gives error 'Certificate validation failure' on startup.
+HR,Manager has not scheduled the mid-year review discussion yet.
+Accounts,Regarding Accounts issue: My salary for this month has not been credited to my HDFC bank account yet.
+IT Support,Shared department mailbox IT-Ops is not appearing in my Outlook sidebar.
+Maintenance,"The 2nd floor open workstation bay is freezing cold, please adjust thermostat. Please let me know who can look into this."
+HR,Quick question: hospital requires cashless TPA pre-authorization form for surgery tomorrow.
+Accounts,Deduction under professional tax seems higher than standard monthly rate.
+Accounts,Vendor Acme Cloud Services invoice #4892 is overdue for payment by 15 days.
+HR,Requesting paternity leave approval for two weeks starting November 1st.
+IT Support,BitLocker recovery key prompt appeared on boot screen after restart. This is blocking my work today.
+Maintenance,Emergency exit sign light near staircase B is dangling loose by its wires.
+Accounts,"Purchase Order (PO) number missing on supplier invoice, payment is blocked."
+Technical,Regarding Technical issue: REST API endpoint /api/v2/analytics response payload truncated due to buffer overflow.
+HR,Quick question: dependent parents hospital claim status inquiry and cashless settlement. Kindly resolve this at your earliest convenience.
+Accounts,Clarification on tax exemption rules for meal vouchers and mobile reimbursement. Please advise on the next steps.
+HR,Vision care benefit claims submission process and approved clinic list.
+Accounts,Urgent issue: per diem daily allowance calculation for international deployment in London.
+HR,Vision care benefit claims submission process and approved clinic list. Appreciate a quick turnaround on this.
+HR,Regarding HR issue: Vision care benefit claims submission process and approved clinic list.
+Accounts,Overtime allowance approved by manager is missing from the current month payslip. Needed before end of day today.
+IT Support,Urgent issue: my laptop is not connecting to the office Wi-Fi network on the 3rd floor. Please advise on the next steps.
+Technical,WebSocket connections disconnect after exactly 60 seconds behind AWS ALB.
+Maintenance,"Hi team, keyboard tray under desk 31 has come loose from its mounting screws. Kindly resolve this at your earliest convenience."
+HR,Reporting an issue: need approval for maternity leave extension by two additional weeks. Please let me know who can look into this.
+Accounts,Expense report submitted two weeks ago is still stuck in Finance approval queue. Please advise on the next steps.
+IT Support,Wi-Fi keeps asking for credentials repeatedly even after entering correct password.
+HR,Submitting university degree certificate for background verification check.
+Accounts,Ticket regarding: client dinner receipt of $185 rejected with reason 'itemized bill missing'.
+HR,Need guidance on the onboarding documentation required for new joinee joining my team.
+Accounts,Ticket regarding: corporate credit card statement shows unexpected duplicate transaction charge. Please let me know who can look into this.
+Technical,Ticket regarding: aPI endpoint leaks sensitive user PII in exception stack trace responses. Needed before end of day today.
+Technical,gRPC client throwing UNAVAILABLE: io exception channel shutdown.
+Maintenance,Regarding Maintenance issue: Hot water geyser in kitchen pantry has tripped and is not heating water.
+Maintenance,Hot water geyser in kitchen pantry has tripped and is not heating water.
+HR,Discrepancy in leave balance calculation after returning from medical leave.
