@@ -13,9 +13,28 @@ import {
   Department
 } from '../types';
 
-const BASE_URL = import.meta.env.VITE_API_URL || '/api';
+function resolveBaseUrl(): string {
+  const envUrl = (import.meta.env.VITE_API_URL || '').trim();
 
-class ApiError extends Error {
+  // If no env var set (e.g. local dev with Vite proxy or Vercel serverless proxy), default to '/api'
+  if (!envUrl) {
+    return '/api';
+  }
+
+  // Strip trailing slashes
+  let cleanUrl = envUrl.replace(/\/+$/, '');
+
+  // If URL doesn't end with /api, ensure /api is appended because FastAPI routes are mounted under /api
+  if (!cleanUrl.endsWith('/api')) {
+    cleanUrl = `${cleanUrl}/api`;
+  }
+
+  return cleanUrl;
+}
+
+export const BASE_URL = resolveBaseUrl();
+
+export class ApiError extends Error {
   status: number;
   constructor(message: string, status: number) {
     super(message);
@@ -33,10 +52,21 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     headers.set('Authorization', `Bearer ${token}`);
   }
 
-  const response = await fetch(`${BASE_URL}${endpoint}`, {
-    ...options,
-    headers,
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${BASE_URL}${endpoint}`, {
+      ...options,
+      headers,
+    });
+  } catch (err: any) {
+    console.error(`[API Network Error] ${BASE_URL}${endpoint}:`, err);
+    throw new ApiError(
+      `Unable to reach WarpDrive API (${BASE_URL}). ` +
+      `The Render backend may be waking up from free-tier sleep (takes ~30-50s), ` +
+      `or CORS/network access was blocked. Please wait a moment and try again.`,
+      0
+    );
+  }
 
   if (response.status === 401) {
     // If unauthorized, clear token if expired

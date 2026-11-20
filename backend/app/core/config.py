@@ -22,8 +22,8 @@ class Settings(BaseSettings):
     # AI Chat / Gemini API
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
 
-    # CORS
-    FRONTEND_URL: str = os.getenv("FRONTEND_URL", "http://localhost:5173")
+    # CORS Configuration
+    FRONTEND_URL: str = os.getenv("FRONTEND_URL", "https://warpdrive-intelligent-service-desk.vercel.app")
     
     @property
     def cors_origins(self) -> List[str]:
@@ -31,10 +31,15 @@ class Settings(BaseSettings):
             "http://localhost:5173",
             "http://localhost:3000",
             "http://127.0.0.1:5173",
-            "http://127.0.0.1:3000"
+            "http://127.0.0.1:3000",
+            "https://warpdrive-intelligent-service-desk.vercel.app"
         ]
-        if self.FRONTEND_URL and self.FRONTEND_URL not in origins:
-            origins.append(self.FRONTEND_URL)
+        if self.FRONTEND_URL:
+            # Handle comma-separated origins and remove trailing slashes
+            for raw_url in self.FRONTEND_URL.split(","):
+                cleaned = raw_url.strip().rstrip("/")
+                if cleaned and cleaned not in origins:
+                    origins.append(cleaned)
         return origins
 
     @property

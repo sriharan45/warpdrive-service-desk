@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Zap,
   Bot,
@@ -12,10 +12,13 @@ import {
   Building,
   CheckCircle2,
   Cpu,
-  LogIn
+  LogIn,
+  AlertTriangle,
+  RefreshCw
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
+import { api, BASE_URL } from '../../services/api';
 import { Modal } from '../common/Modal';
 import { Button } from '../common/Button';
 
@@ -28,6 +31,26 @@ export const LandingPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [backendStatus, setBackendStatus] = useState<'checking' | 'healthy' | 'offline'>('checking');
+
+  const checkConnection = () => {
+    setBackendStatus('checking');
+    api.checkHealth()
+      .then(res => {
+        if (res && res.status === 'healthy') {
+          setBackendStatus('healthy');
+        } else {
+          setBackendStatus('offline');
+        }
+      })
+      .catch(() => {
+        setBackendStatus('offline');
+      });
+  };
+
+  useEffect(() => {
+    checkConnection();
+  }, []);
 
   const handleManualLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,10 +85,29 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-800/50">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              ML Model Online • 97.5% Accuracy
-            </div>
+            {backendStatus === 'healthy' && (
+              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-800/50">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Backend API Connected • ML 97.5%
+              </div>
+            )}
+            {backendStatus === 'checking' && (
+              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-950/60 text-blue-300 border border-blue-800/50">
+                <RefreshCw className="w-3 h-3 animate-spin text-blue-400" />
+                Connecting to API...
+              </div>
+            )}
+            {backendStatus === 'offline' && (
+              <button
+                onClick={checkConnection}
+                className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-950/70 text-rose-300 border border-rose-800/60 hover:bg-rose-900/60 transition-colors"
+                title="Backend may be waking up or unreachable. Click to retry connection."
+              >
+                <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
+                <span>API Offline / Spin-up</span>
+                <RefreshCw className="w-3 h-3 ml-1 text-rose-400" />
+              </button>
+            )}
 
             <Button
               variant="outline"
@@ -82,6 +124,27 @@ export const LandingPage: React.FC = () => {
 
       {/* Hero Section */}
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        {backendStatus === 'offline' && (
+          <div className="mb-8 p-4 rounded-2xl bg-amber-950/40 border border-amber-800/60 text-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-lg">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+              <div className="text-sm">
+                <span className="font-semibold text-amber-100">Render Free Tier Backend Notice: </span>
+                Backend service at <code className="px-1.5 py-0.5 rounded bg-slate-950/70 text-xs text-amber-300 font-mono">{BASE_URL}</code> may be cold-starting (takes 30–50s on Render free tier).
+              </div>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={checkConnection}
+              leftIcon={<RefreshCw className="w-3.5 h-3.5" />}
+              className="text-amber-200 border-amber-700 hover:bg-amber-900/50 whitespace-nowrap text-xs shrink-0"
+            >
+              Check Health Again
+            </Button>
+          </div>
+        )}
+
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/80 text-blue-400 border border-blue-800/60 text-xs font-semibold mb-6">
             <Sparkles className="w-3.5 h-3.5" />

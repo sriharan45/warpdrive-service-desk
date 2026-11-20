@@ -80,22 +80,31 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# CORS configuration
+# CORS configuration with explicit Vercel support & preview regex
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Register routes under /api
+# Canonical routes under /api
 app.include_router(auth_router, prefix=settings.API_V1_STR)
 app.include_router(tickets_router, prefix=settings.API_V1_STR)
 app.include_router(chat_router, prefix=settings.API_V1_STR)
 app.include_router(ml_router, prefix=settings.API_V1_STR)
 app.include_router(admin_router, prefix=settings.API_V1_STR)
 app.include_router(health_router, prefix=settings.API_V1_STR)
+
+# Also mount at root without /api prefix for dual-compatibility
+app.include_router(auth_router)
+app.include_router(tickets_router)
+app.include_router(chat_router)
+app.include_router(ml_router)
+app.include_router(admin_router)
+app.include_router(health_router)
 
 @app.get("/")
 def root():
