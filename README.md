@@ -281,19 +281,31 @@ npm run build
 
 ## Deployment Guide
 
-### Backend: Render
-1. Connect your GitHub repository to [Render](https://render.com).
-2. Select **Web Service** or use the included `render.yaml`.
-3. Configuration:
-   - **Environment**: Python
-   - **Build Command**: `pip install -r backend/requirements.txt && python backend/seed.py`
-   - **Start Command**: `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
+### Backend: Render Deployment
+
+You can deploy on Render using either **Blueprint (`render.yaml`)** or **Manual Web Service**:
+
+#### Method A: Using Blueprint (`render.yaml` - Recommended)
+1. Go to [Render Dashboard](https://dashboard.render.com) > **Blueprints** > **New Blueprint Instance**.
+2. Connect `sriharan45/warpdrive-service-desk`.
+3. Render reads `render.yaml` automatically with `rootDir: backend`, build command `pip install -r requirements.txt && python seed.py`, and start command `python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
+
+#### Method B: Manual Web Service
+1. In Render Dashboard, click **New +** > **Web Service**.
+2. Connect `sriharan45/warpdrive-service-desk`.
+3. Configure the settings:
+   - **Language**: Python 3
+   - **Root Directory**: `backend`
+   - **Build Command**: `pip install -r requirements.txt && python seed.py`
+   - **Start Command**: `python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT`
    - **Health Check Path**: `/api/health`
-4. Set Environment Variables:
-   - `DATABASE_URL`: Your Neon PostgreSQL connection string.
-   - `JWT_SECRET`: Random 64-character secret.
-   - `GEMINI_API_KEY`: Google Gemini API key (optional).
-   - `FRONTEND_URL`: Your Vercel frontend URL.
+4. Set Environment Variables in Render:
+   - `PYTHONPATH`: `.`
+   - `ENVIRONMENT`: `production`
+   - `DATABASE_URL`: Your Neon PostgreSQL connection string (`postgresql://...`)
+   - `JWT_SECRET`: Random 64-character secret
+   - `GEMINI_API_KEY`: Google Gemini API key (optional)
+   - `FRONTEND_URL`: Your Vercel frontend URL (e.g., `https://warpdrive-service-desk.vercel.app`)
 
 ### Frontend: Vercel
 1. Connect your GitHub repository to [Vercel](https://vercel.com).

@@ -7,8 +7,21 @@ from sqlalchemy import pool
 
 from alembic import context
 
-# Add repository root to path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+# Add repository root and backend directory to path
+_backend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+_repo_root = os.path.abspath(os.path.join(_backend_dir, ".."))
+for _p in [_repo_root, _backend_dir]:
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+
+if 'backend' not in sys.modules:
+    import types
+    try:
+        import backend
+    except ImportError:
+        _backend_mod = types.ModuleType('backend')
+        _backend_mod.__path__ = [_backend_dir]
+        sys.modules['backend'] = _backend_mod
 
 from backend.app.core.config import settings
 from backend.app.core.database import Base

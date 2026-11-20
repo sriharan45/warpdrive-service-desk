@@ -1,3 +1,27 @@
+import os
+import sys
+
+# Ensure repository root and backend directory are in sys.path
+# This supports running from repo root (uvicorn backend.app.main:app)
+# and running with Render Root Directory set to 'backend' (uvicorn app.main:app)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))     # .../backend/app
+BACKEND_DIR = os.path.dirname(CURRENT_DIR)                   # .../backend
+REPO_ROOT = os.path.dirname(BACKEND_DIR)                     # .../ (repo root)
+
+for _path in [REPO_ROOT, BACKEND_DIR]:
+    if _path not in sys.path:
+        sys.path.insert(0, _path)
+
+# If 'backend' is not in sys.modules, provide virtual module mapping to BACKEND_DIR
+if 'backend' not in sys.modules:
+    import types
+    try:
+        import backend
+    except ImportError:
+        _backend_mod = types.ModuleType('backend')
+        _backend_mod.__path__ = [BACKEND_DIR]
+        sys.modules['backend'] = _backend_mod
+
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
