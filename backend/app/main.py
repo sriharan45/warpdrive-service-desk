@@ -44,23 +44,12 @@ async def lifespan(app: FastAPI):
     # Startup: ensure tables exist
     Base.metadata.create_all(bind=engine)
     
-    # Initialize default departments if not present
-    db: Session = SessionLocal()
+    # Ensure default departments, demo users, and initial tickets exist
     try:
-        default_depts = [
-            ("IT Support", "Hardware, software, network, access, and workstation support"),
-            ("Technical", "Bugs, backend issues, system defects, APIs, and infrastructure"),
-            ("HR", "Leave requests, benefits, policies, attendance, and onboarding"),
-            ("Accounts", "Salary, payroll, tax forms, reimbursements, and invoices"),
-            ("Maintenance", "HVAC, electrical, plumbing, facilities, and office repairs")
-        ]
-        for name, desc in default_depts:
-            dept = db.query(Department).filter(Department.name == name).first()
-            if not dept:
-                db.add(Department(name=name, description=desc))
-        db.commit()
-    finally:
-        db.close()
+        from backend.seed import seed_database
+        seed_database()
+    except Exception as e:
+        print(f"[Startup Warning] Seed execution warning: {e}")
 
     # Pre-warm ML model
     if ml_service.is_ready():

@@ -102,6 +102,11 @@ export const api = {
       method: 'POST',
     }),
 
+  setupDemo: () =>
+    request<{ status: string; message: string; accounts: Array<{ role: string; email: string; name: string }> }>('/auth/setup-demo', {
+      method: 'POST',
+    }),
+
   // Tickets
   createTicket: (data: {
     subject: string;

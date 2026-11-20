@@ -87,6 +87,13 @@ def seed_database():
                 db.commit()
                 db.refresh(user)
                 print(f"[Seed] Created demo user: {email} ({role})")
+            else:
+                from backend.app.core.security import verify_password
+                if not verify_password(password, user.hashed_password):
+                    user.hashed_password = hash_password(password)
+                    user.is_active = True
+                    db.commit()
+                    print(f"[Seed] Refreshed password hash for demo user: {email}")
             user_map[email] = user
 
         # 3. Seed Realistic Sample Tickets across departments and statuses

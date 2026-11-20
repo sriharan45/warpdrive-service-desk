@@ -14,24 +14,122 @@ import {
   Cpu,
   LogIn,
   AlertTriangle,
-  RefreshCw
+  RefreshCw,
+  Eye,
+  EyeOff,
+  Mail,
+  KeyRound,
+  Database,
+  Check,
+  Copy
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
 import { useTheme } from '../../context/ThemeContext';
 import { api, BASE_URL } from '../../services/api';
 import { Modal } from '../common/Modal';
 import { Button } from '../common/Button';
 
+type PortalType = 'employee' | 'domain_admin' | 'org_admin' | 'general';
+
+interface DemoAccount {
+  role: string;
+  name: string;
+  email: string;
+  pass: string;
+  dept?: string;
+  portal: PortalType;
+}
+
+const DEMO_ACCOUNTS: DemoAccount[] = [
+  // Employees
+  {
+    role: 'Employee',
+    name: 'Sarah Connor',
+    email: 'employee@warpdrive.com',
+    pass: 'EmployeePass123!',
+    dept: 'Engineering',
+    portal: 'employee'
+  },
+  {
+    role: 'Employee',
+    name: 'John Doe',
+    email: 'john.doe@warpdrive.com',
+    pass: 'EmployeePass123!',
+    dept: 'Operations',
+    portal: 'employee'
+  },
+  // Domain Admins
+  {
+    role: 'Domain Admin',
+    name: 'Alex Rivera',
+    email: 'admin.it@warpdrive.com',
+    pass: 'AdminPass123!',
+    dept: 'IT Support',
+    portal: 'domain_admin'
+  },
+  {
+    role: 'Domain Admin',
+    name: 'Elena Vance',
+    email: 'admin.tech@warpdrive.com',
+    pass: 'AdminPass123!',
+    dept: 'Technical',
+    portal: 'domain_admin'
+  },
+  {
+    role: 'Domain Admin',
+    name: 'Marcus Chen',
+    email: 'admin.hr@warpdrive.com',
+    pass: 'AdminPass123!',
+    dept: 'HR',
+    portal: 'domain_admin'
+  },
+  {
+    role: 'Domain Admin',
+    name: 'Priya Sharma',
+    email: 'admin.accounts@warpdrive.com',
+    pass: 'AdminPass123!',
+    dept: 'Accounts',
+    portal: 'domain_admin'
+  },
+  {
+    role: 'Domain Admin',
+    name: 'David Miller',
+    email: 'admin.maint@warpdrive.com',
+    pass: 'AdminPass123!',
+    dept: 'Maintenance',
+    portal: 'domain_admin'
+  },
+  // Organization Admin
+  {
+    role: 'Organization Admin',
+    name: 'Diana Prince',
+    email: 'org.admin@warpdrive.com',
+    pass: 'OrgAdminPass123!',
+    dept: 'Executive Oversight',
+    portal: 'org_admin'
+  }
+];
+
 export const LandingPage: React.FC = () => {
-  const { login, quickLogin, isLoading } = useAuth();
+  const { login } = useAuth();
+  const { addToast } = useToast();
   const { theme, toggleTheme } = useTheme();
 
+  // Modal & Form State
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [activePortal, setActivePortal] = useState<PortalType>('general');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<{ email?: string; password?: string }>({});
   const [loginError, setLoginError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Backend Health & Seed State
   const [backendStatus, setBackendStatus] = useState<'checking' | 'healthy' | 'offline'>('checking');
+  const [isSeedingDemo, setIsSeedingDemo] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const checkConnection = () => {
     setBackendStatus('checking');
@@ -52,18 +150,100 @@ export const LandingPage: React.FC = () => {
     checkConnection();
   }, []);
 
+  const openPortalLogin = (portal: PortalType, prefillEmail: string = '', prefillPass: string = '') => {
+    setActivePortal(portal);
+    setEmail(prefillEmail);
+    setPassword(prefillPass);
+    setFieldErrors({});
+    setLoginError('');
+    setShowPassword(false);
+    setIsLoginModalOpen(true);
+  };
+
   const handleManualLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError('');
+    const errors: { email?: string; password?: string } = {};
+
+    if (!email.trim()) {
+      errors.email = 'Corporate email address is required';
+    } else if (!email.includes('@')) {
+      errors.email = 'Please enter a valid email address';
+    }
+
+    if (!password) {
+      errors.password = 'Password is required';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      return;
+    }
+
+    setFieldErrors({});
     setIsSubmitting(true);
+
     try {
-      await login(email, password);
+      await login(email.trim(), password);
+      // Navigation is handled automatically by App.tsx observing useAuth() state
     } catch (err: any) {
-      setLoginError(err.message || 'Login failed. Check your credentials.');
+      setLoginError(err.message || 'Invalid email or password. Please verify your credentials.');
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const handleSeedDemoDatabase = async () => {
+    setIsSeedingDemo(true);
+    try {
+      const res = await api.setupDemo();
+      addToast(res.message || 'Demo database accounts verified and seeded successfully!', 'success');
+      checkConnection();
+    } catch (err: any) {
+      addToast(err.message || 'Failed to verify demo accounts. Ensure backend is running.', 'error');
+    } finally {
+      setIsSeedingDemo(false);
+    }
+  };
+
+  const copyToClipboard = (text: string, key: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    addToast(`Copied "${text}" to clipboard`, 'info', 2000);
+    setTimeout(() => setCopiedKey(null), 2000);
+  };
+
+  // Dynamic portal details
+  const portalMeta = {
+    employee: {
+      badge: 'Employee Portal',
+      title: 'Employee Request Sign In',
+      subtitle: 'Sign in with your corporate email to submit requests and track personal tickets',
+      accentColor: 'blue',
+      icon: <Bot className="w-5 h-5 text-blue-400" />
+    },
+    domain_admin: {
+      badge: 'Department Admin',
+      title: 'Department Administrator Sign In',
+      subtitle: 'Sign in to manage authorized IT Support, Technical, HR, Accounts, or Maintenance queues',
+      accentColor: 'indigo',
+      icon: <Server className="w-5 h-5 text-indigo-400" />
+    },
+    org_admin: {
+      badge: 'Organization Admin',
+      title: 'Organization Administrator Sign In',
+      subtitle: 'Sign in to access global analytics, audit logs, and cross-department governance',
+      accentColor: 'emerald',
+      icon: <ShieldCheck className="w-5 h-5 text-emerald-400" />
+    },
+    general: {
+      badge: 'Enterprise Access',
+      title: 'WarpDrive Enterprise Sign In',
+      subtitle: 'Enter your verified corporate credentials to access your authorized workspace',
+      accentColor: 'blue',
+      icon: <Lock className="w-5 h-5 text-blue-400" />
+    }
+  }[activePortal];
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white">
@@ -112,7 +292,7 @@ export const LandingPage: React.FC = () => {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => setIsLoginModalOpen(true)}
+              onClick={() => openPortalLogin('general')}
               leftIcon={<LogIn className="w-4 h-4" />}
               className="text-slate-200 border-slate-700 hover:bg-slate-800"
             >
@@ -122,8 +302,9 @@ export const LandingPage: React.FC = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Main Container */}
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        {/* Render Free Tier Spin-up Notice */}
         {backendStatus === 'offline' && (
           <div className="mb-8 p-4 rounded-2xl bg-amber-950/40 border border-amber-800/60 text-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-lg">
             <div className="flex items-start gap-3">
@@ -145,6 +326,7 @@ export const LandingPage: React.FC = () => {
           </div>
         )}
 
+        {/* Hero Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/80 text-blue-400 border border-blue-800/60 text-xs font-semibold mb-6">
             <Sparkles className="w-3.5 h-3.5" />
@@ -181,29 +363,29 @@ export const LandingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* 3 Core Roles - Instant One-Click Access Cards */}
+        {/* 3 Core Login Portals */}
         <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-white tracking-tight">
-              One-Click Enterprise Role Access
+              Enterprise Login Portals
             </h2>
             <p className="text-sm text-slate-400 mt-1">
-              Select a role below to instantly explore the dashboard with pre-seeded demo accounts.
+              Select your authorized portal to open the secure sign-in form.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Role 1: Employee */}
+            {/* Portal 1: Employee */}
             <div className="p-6 rounded-2xl bg-slate-800/60 border border-slate-700/80 hover:border-blue-500/50 transition-all flex flex-col justify-between shadow-xl">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center mb-4">
                   <Bot className="w-6 h-6" />
                 </div>
                 <div className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-blue-900/60 text-blue-300 border border-blue-800 mb-2">
-                  Employee Role
+                  Employee Portal
                 </div>
                 <h3 className="text-xl font-bold text-white">
-                  Employee Portal
+                  Employee Service Portal
                 </h3>
                 <p className="text-xs text-slate-400 mt-2 leading-relaxed">
                   Submit requests via conversational AI assistant, receive real-time ML category predictions, review ticket confirmation cards, and track personal ticket status.
@@ -218,28 +400,25 @@ export const LandingPage: React.FC = () => {
                     <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
                     <span>Strict isolation: view own requests only</span>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
+                    <span>Automatic department & priority detection</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-700/60 flex flex-col gap-2">
+              <div className="mt-6 pt-4 border-t border-slate-700/60">
                 <Button
-                  onClick={() => quickLogin('employee')}
-                  isLoading={isLoading}
-                  className="w-full"
+                  onClick={() => openPortalLogin('employee')}
+                  className="w-full bg-blue-600 hover:bg-blue-500 shadow-blue-500/20"
                   rightIcon={<ArrowRight className="w-4 h-4" />}
                 >
-                  Launch as Sarah (Employee)
+                  Employee Login
                 </Button>
-                <button
-                  onClick={() => quickLogin('john')}
-                  className="text-xs text-slate-400 hover:text-slate-200 transition-colors py-1"
-                >
-                  Or launch as John Doe (Operations)
-                </button>
               </div>
             </div>
 
-            {/* Role 2: Domain Administrator */}
+            {/* Portal 2: Department Admin */}
             <div className="p-6 rounded-2xl bg-slate-800/60 border border-slate-700/80 hover:border-indigo-500/50 transition-all flex flex-col justify-between shadow-xl">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center mb-4">
@@ -249,61 +428,50 @@ export const LandingPage: React.FC = () => {
                   Domain Admin
                 </div>
                 <h3 className="text-xl font-bold text-white">
-                  Domain Administrator
+                  Department Admin Portal
                 </h3>
                 <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-                  Authorized to manage a single department's queue. Accepts tickets (Pending → In Progress), adds internal notes, marks complete with resolution notes, or reopens tickets.
+                  Authorized to manage assigned department queues. Process pending requests, append internal notes, record resolution summaries, or reopen tickets.
                 </p>
 
                 <p className="text-[11px] font-semibold text-indigo-300 mt-3 mb-2">
-                  Select Department Queue:
+                  Authorized Department Queues:
                 </p>
-                <div className="grid grid-cols-2 gap-1.5">
-                  <button
-                    onClick={() => quickLogin('admin_it')}
-                    className="text-left px-2.5 py-1.5 rounded-lg bg-slate-900/70 hover:bg-indigo-950/80 border border-slate-700 hover:border-indigo-500/60 text-[11px] text-slate-200 transition-colors flex items-center justify-between"
-                  >
-                    <span>IT Support</span>
-                    <ArrowRight className="w-3 h-3 text-indigo-400" />
-                  </button>
-                  <button
-                    onClick={() => quickLogin('admin_tech')}
-                    className="text-left px-2.5 py-1.5 rounded-lg bg-slate-900/70 hover:bg-indigo-950/80 border border-slate-700 hover:border-indigo-500/60 text-[11px] text-slate-200 transition-colors flex items-center justify-between"
-                  >
-                    <span>Technical</span>
-                    <ArrowRight className="w-3 h-3 text-indigo-400" />
-                  </button>
-                  <button
-                    onClick={() => quickLogin('admin_hr')}
-                    className="text-left px-2.5 py-1.5 rounded-lg bg-slate-900/70 hover:bg-indigo-950/80 border border-slate-700 hover:border-indigo-500/60 text-[11px] text-slate-200 transition-colors flex items-center justify-between"
-                  >
-                    <span>HR</span>
-                    <ArrowRight className="w-3 h-3 text-indigo-400" />
-                  </button>
-                  <button
-                    onClick={() => quickLogin('admin_accounts')}
-                    className="text-left px-2.5 py-1.5 rounded-lg bg-slate-900/70 hover:bg-indigo-950/80 border border-slate-700 hover:border-indigo-500/60 text-[11px] text-slate-200 transition-colors flex items-center justify-between"
-                  >
-                    <span>Accounts</span>
-                    <ArrowRight className="w-3 h-3 text-indigo-400" />
-                  </button>
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {['IT Support', 'Technical', 'HR', 'Accounts', 'Maintenance'].map(dept => (
+                    <span
+                      key={dept}
+                      className="px-2 py-0.5 rounded-md bg-slate-900 border border-slate-700 text-[11px] text-slate-300"
+                    >
+                      {dept}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="space-y-1.5 text-xs text-slate-300">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0" />
+                    <span>Pending → In Progress → Completed workflow</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0" />
+                    <span>Strict backend department isolation</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-700/60">
+              <div className="mt-6 pt-4 border-t border-slate-700/60">
                 <Button
-                  onClick={() => quickLogin('admin_maint')}
-                  isLoading={isLoading}
-                  variant="outline"
-                  size="sm"
-                  className="w-full text-slate-200 border-slate-700 hover:bg-slate-800"
+                  onClick={() => openPortalLogin('domain_admin')}
+                  className="w-full bg-indigo-600 hover:bg-indigo-500 shadow-indigo-500/20"
+                  rightIcon={<ArrowRight className="w-4 h-4" />}
                 >
-                  Launch Maintenance Admin
+                  Department Admin Login
                 </Button>
               </div>
             </div>
 
-            {/* Role 3: Organization Administrator */}
+            {/* Portal 3: Organization Admin */}
             <div className="p-6 rounded-2xl bg-slate-800/60 border border-slate-700/80 hover:border-emerald-500/50 transition-all flex flex-col justify-between shadow-xl">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mb-4">
@@ -313,7 +481,7 @@ export const LandingPage: React.FC = () => {
                   Executive Monitor
                 </div>
                 <h3 className="text-xl font-bold text-white">
-                  Organization Administrator
+                  Organization Admin Portal
                 </h3>
                 <p className="text-xs text-slate-400 mt-2 leading-relaxed">
                   Global visibility across all 5 departments. Real-time workload distribution charts, ticket trends, conversation histories, audit trail, and ML metrics.
@@ -326,13 +494,178 @@ export const LandingPage: React.FC = () => {
 
               <div className="mt-6 pt-4 border-t border-slate-700/60">
                 <Button
-                  onClick={() => quickLogin('org_admin')}
-                  isLoading={isLoading}
+                  onClick={() => openPortalLogin('org_admin')}
                   className="w-full bg-emerald-600 hover:bg-emerald-500 shadow-emerald-500/20"
                   rightIcon={<ArrowRight className="w-4 h-4" />}
                 >
-                  Launch as Diana (Org Admin)
+                  Organization Admin Login
                 </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Demo Credentials Reference Section */}
+        <div className="mb-16 p-6 rounded-2xl bg-slate-800/40 border border-slate-800">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-bold text-blue-400 uppercase tracking-wider mb-1">
+                <Database className="w-3.5 h-3.5" />
+                Verified Seeded Demo Accounts (Reference)
+              </div>
+              <h3 className="text-lg font-bold text-white">
+                Official Demo Credentials
+              </h3>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Use these verified credentials in each portal's login form. Click "Fill Form" to populate the credentials into the sign-in modal.
+              </p>
+            </div>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleSeedDemoDatabase}
+              isLoading={isSeedingDemo}
+              leftIcon={<RefreshCw className={`w-3.5 h-3.5 ${isSeedingDemo ? 'animate-spin' : ''}`} />}
+              className="text-xs text-slate-300 border-slate-700 hover:bg-slate-800 shrink-0"
+              title="Ensure demo accounts exist and password hashes match in the live database"
+            >
+              Verify Database Demo Accounts
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Employee Demo Accounts */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-xs font-semibold text-blue-400">
+                <Bot className="w-4 h-4" />
+                <span>Employee Accounts</span>
+              </div>
+
+              <div className="space-y-2">
+                {DEMO_ACCOUNTS.filter(a => a.portal === 'employee').map(acc => (
+                  <div
+                    key={acc.email}
+                    className="p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 flex items-center justify-between gap-2"
+                  >
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold text-white truncate">{acc.name}</p>
+                      <p className="text-[11px] font-mono text-slate-400 truncate">{acc.email}</p>
+                      <p className="text-[10px] text-slate-500 font-mono">Pass: {acc.pass}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <button
+                        onClick={() => copyToClipboard(acc.email, `emp-${acc.email}`)}
+                        className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                        title="Copy email"
+                      >
+                        {copiedKey === `emp-${acc.email}` ? (
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                      <button
+                        onClick={() => openPortalLogin('employee', acc.email, acc.pass)}
+                        className="px-2 py-1 rounded bg-blue-600/20 text-blue-300 hover:bg-blue-600/40 border border-blue-500/30 text-[11px] font-semibold transition-colors"
+                      >
+                        Fill Form
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Domain Admin Demo Accounts */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-xs font-semibold text-indigo-400">
+                <Server className="w-4 h-4" />
+                <span>Department Admin Accounts</span>
+              </div>
+
+              <div className="space-y-2 max-h-[260px] overflow-y-auto pr-1">
+                {DEMO_ACCOUNTS.filter(a => a.portal === 'domain_admin').map(acc => (
+                  <div
+                    key={acc.email}
+                    className="p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 flex items-center justify-between gap-2"
+                  >
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs font-semibold text-white truncate">{acc.dept}</span>
+                        <span className="text-[10px] text-slate-400 truncate">({acc.name})</span>
+                      </div>
+                      <p className="text-[11px] font-mono text-slate-400 truncate">{acc.email}</p>
+                      <p className="text-[10px] text-slate-500 font-mono">Pass: {acc.pass}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <button
+                        onClick={() => copyToClipboard(acc.email, `admin-${acc.email}`)}
+                        className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                        title="Copy email"
+                      >
+                        {copiedKey === `admin-${acc.email}` ? (
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                      <button
+                        onClick={() => openPortalLogin('domain_admin', acc.email, acc.pass)}
+                        className="px-2 py-1 rounded bg-indigo-600/20 text-indigo-300 hover:bg-indigo-600/40 border border-indigo-500/30 text-[11px] font-semibold transition-colors"
+                      >
+                        Fill Form
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Org Admin Demo Account */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Organization Admin Account</span>
+              </div>
+
+              <div className="space-y-2">
+                {DEMO_ACCOUNTS.filter(a => a.portal === 'org_admin').map(acc => (
+                  <div
+                    key={acc.email}
+                    className="p-3 rounded-xl bg-slate-900/60 border border-slate-700/60 flex items-center justify-between gap-2"
+                  >
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold text-white truncate">{acc.name}</p>
+                      <p className="text-[11px] font-mono text-slate-400 truncate">{acc.email}</p>
+                      <p className="text-[10px] text-slate-500 font-mono">Pass: {acc.pass}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <button
+                        onClick={() => copyToClipboard(acc.email, `org-${acc.email}`)}
+                        className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                        title="Copy email"
+                      >
+                        {copiedKey === `org-${acc.email}` ? (
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                      <button
+                        onClick={() => openPortalLogin('org_admin', acc.email, acc.pass)}
+                        className="px-2 py-1 rounded bg-emerald-600/20 text-emerald-300 hover:bg-emerald-600/40 border border-emerald-500/30 text-[11px] font-semibold transition-colors"
+                      >
+                        Fill Form
+                      </button>
+                    </div>
+                  </div>
+                ))}
+
+                <div className="p-3 rounded-xl bg-slate-900/40 border border-slate-800 text-[11px] text-slate-400 leading-relaxed">
+                  <span className="font-semibold text-slate-300">Authentication Policy: </span>
+                  Passwords are encrypted using bcrypt (12 rounds) and verified against PostgreSQL on Neon. JWT tokens expire after 24 hours.
+                </div>
               </div>
             </div>
           </div>
@@ -349,7 +682,7 @@ export const LandingPage: React.FC = () => {
                 Conversational Ticket Creation
               </h4>
               <p className="text-xs text-slate-400 mt-1">
-                Employees describe issues in plain English. Assistant clarifies requirements and renders a confirmation card before submission.
+                Employees describe issues in natural language. Assistant clarifies requirements and renders a confirmation card before submission.
               </p>
             </div>
           </div>
@@ -384,66 +717,175 @@ export const LandingPage: React.FC = () => {
         </div>
       </main>
 
-      {/* Manual Login Modal */}
+      {/* Enterprise Authentication Modal */}
       <Modal
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
-        title="Enterprise Account Sign In"
-        subtitle="Sign in with your WarpDrive Tech Works corporate credentials"
+        title={portalMeta.title}
+        subtitle={portalMeta.subtitle}
         maxWidth="md"
       >
-        <form onSubmit={handleManualLogin} className="space-y-4">
-          {loginError && (
-            <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-medium">
-              {loginError}
-            </div>
-          )}
-
-          <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">
-              Corporate Email Address
-            </label>
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="e.g. employee@warpdrive.com"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">
-              Password
-            </label>
-            <input
-              type="password"
-              required
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              placeholder="Enter your secure password"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div className="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 text-[11px] text-slate-400">
-            <strong>Demo Credentials:</strong><br />
-            Employee: <code>employee@warpdrive.com</code> / <code>EmployeePass123!</code><br />
-            IT Admin: <code>admin.it@warpdrive.com</code> / <code>AdminPass123!</code><br />
-            Org Admin: <code>org.admin@warpdrive.com</code> / <code>OrgAdminPass123!</code>
-          </div>
-
-          <div className="pt-2">
-            <Button
-              type="submit"
-              isLoading={isSubmitting}
-              className="w-full"
+        <div className="space-y-4">
+          {/* Portal Switcher Tabs */}
+          <div className="flex rounded-xl bg-slate-900 p-1 border border-slate-800 text-xs font-semibold">
+            <button
+              type="button"
+              onClick={() => setActivePortal('employee')}
+              className={`flex-1 py-1.5 rounded-lg transition-all ${
+                activePortal === 'employee'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
             >
-              Sign In to Service Desk
-            </Button>
+              Employee
+            </button>
+            <button
+              type="button"
+              onClick={() => setActivePortal('domain_admin')}
+              className={`flex-1 py-1.5 rounded-lg transition-all ${
+                activePortal === 'domain_admin'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Dept Admin
+            </button>
+            <button
+              type="button"
+              onClick={() => setActivePortal('org_admin')}
+              className={`flex-1 py-1.5 rounded-lg transition-all ${
+                activePortal === 'org_admin'
+                  ? 'bg-emerald-600 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Org Admin
+            </button>
           </div>
-        </form>
+
+          {/* Form */}
+          <form onSubmit={handleManualLogin} className="space-y-4">
+            {loginError && (
+              <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium flex items-start gap-2.5">
+                <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                <span>{loginError}</span>
+              </div>
+            )}
+
+            {/* Email Field */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                Corporate Email / User ID
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <input
+                  type="email"
+                  value={email}
+                  disabled={isSubmitting}
+                  onChange={e => {
+                    setEmail(e.target.value);
+                    if (fieldErrors.email) setFieldErrors(prev => ({ ...prev, email: undefined }));
+                  }}
+                  placeholder={
+                    activePortal === 'employee'
+                      ? 'employee@warpdrive.com'
+                      : activePortal === 'domain_admin'
+                      ? 'admin.it@warpdrive.com'
+                      : activePortal === 'org_admin'
+                      ? 'org.admin@warpdrive.com'
+                      : 'name@warpdrive.com'
+                  }
+                  className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 transition-all ${
+                    fieldErrors.email
+                      ? 'border border-rose-500 focus:ring-rose-500'
+                      : 'border border-slate-700 focus:ring-blue-500'
+                  } ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''}`}
+                />
+              </div>
+              {fieldErrors.email && (
+                <p className="mt-1 text-xs text-rose-400 font-medium">{fieldErrors.email}</p>
+              )}
+            </div>
+
+            {/* Password Field */}
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-xs font-semibold text-slate-300">
+                  Password
+                </label>
+                <span className="text-[11px] text-slate-500">Bcrypt encrypted</span>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                  <KeyRound className="w-4 h-4" />
+                </div>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  disabled={isSubmitting}
+                  onChange={e => {
+                    setPassword(e.target.value);
+                    if (fieldErrors.password) setFieldErrors(prev => ({ ...prev, password: undefined }));
+                  }}
+                  placeholder="Enter your secure password"
+                  className={`w-full pl-10 pr-10 py-2.5 rounded-xl bg-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 transition-all ${
+                    fieldErrors.password
+                      ? 'border border-rose-500 focus:ring-rose-500'
+                      : 'border border-slate-700 focus:ring-blue-500'
+                  } ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''}`}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-200 transition-colors"
+                  title={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? (
+                    <EyeOff className="w-4 h-4" />
+                  ) : (
+                    <Eye className="w-4 h-4" />
+                  )}
+                </button>
+              </div>
+              {fieldErrors.password && (
+                <p className="mt-1 text-xs text-rose-400 font-medium">{fieldErrors.password}</p>
+              )}
+            </div>
+
+            {/* Quick Demo Credentials Tip */}
+            <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+              <div>
+                <span className="font-semibold text-slate-300">Demo Password Pattern: </span>
+                <code className="text-blue-300 bg-slate-950 px-1.5 py-0.5 rounded">RoleNamePass123!</code>
+              </div>
+              <span className="text-[10px] text-slate-500">e.g. EmployeePass123!</span>
+            </div>
+
+            {/* Buttons */}
+            <div className="pt-2 flex flex-col sm:flex-row gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setIsLoginModalOpen(false)}
+                disabled={isSubmitting}
+                className="w-full sm:w-1/3 text-slate-300 border-slate-700 hover:bg-slate-800 text-xs"
+              >
+                Back to Portals
+              </Button>
+              <Button
+                type="submit"
+                isLoading={isSubmitting}
+                className="w-full sm:w-2/3"
+                leftIcon={<LogIn className="w-4 h-4" />}
+              >
+                {isSubmitting ? 'Authenticating...' : `Sign In to Service Desk`}
+              </Button>
+            </div>
+          </form>
+        </div>
       </Modal>
 
       {/* Footer */}

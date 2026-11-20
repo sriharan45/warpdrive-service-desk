@@ -109,3 +109,29 @@ def logout(current_user: User = Depends(get_current_user), db: Session = Depends
         details=f"User {current_user.email} logged out."
     )
     return {"message": "Successfully logged out."}
+
+@router.post("/setup-demo")
+def setup_demo_accounts(db: Session = Depends(get_db)):
+    """Safe idempotent setup: ensures demo accounts exist and hashes match documented passwords."""
+    try:
+        from backend.seed import seed_database
+        seed_database()
+        return {
+            "status": "success",
+            "message": "Demo accounts and initial seed data verified successfully.",
+            "accounts": [
+                {"role": "Employee", "email": "employee@warpdrive.com", "name": "Sarah Connor"},
+                {"role": "Employee", "email": "john.doe@warpdrive.com", "name": "John Doe"},
+                {"role": "Domain Admin (IT Support)", "email": "admin.it@warpdrive.com", "name": "Alex Rivera"},
+                {"role": "Domain Admin (Technical)", "email": "admin.tech@warpdrive.com", "name": "Elena Vance"},
+                {"role": "Domain Admin (HR)", "email": "admin.hr@warpdrive.com", "name": "Marcus Chen"},
+                {"role": "Domain Admin (Accounts)", "email": "admin.accounts@warpdrive.com", "name": "Priya Sharma"},
+                {"role": "Domain Admin (Maintenance)", "email": "admin.maint@warpdrive.com", "name": "David Miller"},
+                {"role": "Organization Admin", "email": "org.admin@warpdrive.com", "name": "Diana Prince"}
+            ]
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to seed demo accounts: {str(e)}"
+        )

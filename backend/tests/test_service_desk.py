@@ -33,19 +33,39 @@ def login_user(client: TestClient, email: str, password: str = "AdminPass123!") 
 
 # ----------------- 1. Authentication Tests -----------------
 def test_auth_success_and_failure(client: TestClient):
-    # Success
+    # Setup demo endpoint check
+    setup_resp = client.post("/api/auth/setup-demo")
+    assert setup_resp.status_code == 200
+    assert setup_resp.json()["status"] == "success"
+    assert len(setup_resp.json()["accounts"]) >= 8
+
+    # Success - Employee
     resp = client.post("/api/auth/login", json={"email": "employee@warpdrive.com", "password": "EmployeePass123!"})
     assert resp.status_code == 200
     assert "access_token" in resp.json()
     assert resp.json()["user"]["role"] == "employee"
 
+    # Success - Domain Admin
+    admin_resp = client.post("/api/auth/login", json={"email": "admin.it@warpdrive.com", "password": "AdminPass123!"})
+    assert admin_resp.status_code == 200
+    assert admin_resp.json()["user"]["role"] == "domain_admin"
+    assert admin_resp.json()["user"]["department"] == "IT Support"
+
+    # Success - Organization Admin
+    org_resp = client.post("/api/auth/login", json={"email": "org.admin@warpdrive.com", "password": "OrgAdminPass123!"})
+    assert org_resp.status_code == 200
+    assert org_resp.json()["user"]["role"] == "org_admin"
+
     # Bad password
-    resp = client.post("/api/auth/login", json={"email": "employee@warpdrive.com", "password": "WrongPassword"})
-    assert resp.status_code == 401
+    bad_resp = client.post("/api/auth/login", json={"email": "employee@warpdrive.com", "password": "WrongPassword"})
+    assert bad_resp.status_code == 401
+    assert bad_resp.json()["detail"] == "Incorrect email or password"
+
+    # Bad email
+    bad_email = client.post("/api/auth/login", json={"email": "nonexistent@warpdrive.com", "password": "AnyPassword123!"})
+    assert bad_email.status_code == 401
 
     # Current user profile
-    headers = {"Authorization": f"Bearer {resp.json().get('access_token', '')}"}
-    # With valid token
     valid_login = login_user(client, "employee@warpdrive.com")
     me_resp = client.get("/api/auth/me", headers=valid_login["headers"])
     assert me_resp.status_code == 200

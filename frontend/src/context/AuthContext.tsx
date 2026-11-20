@@ -9,7 +9,6 @@ interface AuthContextType {
   isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
-  quickLogin: (preset: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -84,26 +83,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const quickLogin = async (preset: string) => {
-    const presets: Record<string, { email: string; pass: string }> = {
-      'employee': { email: 'employee@warpdrive.com', pass: 'EmployeePass123!' },
-      'john': { email: 'john.doe@warpdrive.com', pass: 'EmployeePass123!' },
-      'admin_it': { email: 'admin.it@warpdrive.com', pass: 'AdminPass123!' },
-      'admin_tech': { email: 'admin.tech@warpdrive.com', pass: 'AdminPass123!' },
-      'admin_hr': { email: 'admin.hr@warpdrive.com', pass: 'AdminPass123!' },
-      'admin_accounts': { email: 'admin.accounts@warpdrive.com', pass: 'AdminPass123!' },
-      'admin_maint': { email: 'admin.maint@warpdrive.com', pass: 'AdminPass123!' },
-      'org_admin': { email: 'org.admin@warpdrive.com', pass: 'OrgAdminPass123!' },
-    };
-
-    const target = presets[preset];
-    if (target) {
-      await login(target.email, target.pass);
-    }
-  };
-
   return (
-    <AuthContext.Provider value={{ user, token, isLoading, login, logout, quickLogin }}>
+    <AuthContext.Provider value={{ user, token, isLoading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
